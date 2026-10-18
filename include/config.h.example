@@ -1,0 +1,21 @@
+/**
+ * @file config.h.example
+ * @brief Example configuration file for Smart-Drip credentials.
+ * 
+ * Copy this file to "include/config.h" and enter your credentials.
+ * "include/config.h" is ignored by Git to protect sensitive information.
+ */
+
+#pragma once
+
+// Blynk Cloud Credentials
+#define BLYNK_TEMPLATE_ID   "YOUR_BLYNK_TEMPLATE_ID"
+#define BLYNK_TEMPLATE_NAME "SmartDripVein"
+#define BLYNK_AUTH_TOKEN    "YOUR_BLYNK_AUTH_TOKEN"
+
+// Wi-Fi Access Point Credentials
+#define WIFI_SSID           "YOUR_WIFI_SSID"
+#define WIFI_PASS           "YOUR_WIFI_PASSWORD"
+
+// Load Cell Calibration Factor
+#define LOADCELL_CALIBRATION 442084.0f

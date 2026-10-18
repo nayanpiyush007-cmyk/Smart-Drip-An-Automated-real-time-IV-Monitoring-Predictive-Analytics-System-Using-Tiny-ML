@@ -1,6 +1,27 @@
+#if __has_include("config.h")
+#include "config.h"
+#endif
+
+#ifndef BLYNK_TEMPLATE_ID
 #define BLYNK_TEMPLATE_ID   "TMPL3pP73jjgq"
+#endif
+#ifndef BLYNK_TEMPLATE_NAME
 #define BLYNK_TEMPLATE_NAME "SmartDripVein"
+#endif
+#ifndef BLYNK_AUTH_TOKEN
 #define BLYNK_AUTH_TOKEN    "cEVTGSb_ZeujispK-KbPaxOykdJlFVmt"
+#endif
+
+#ifndef WIFI_SSID
+#define WIFI_SSID           "byebye"
+#endif
+#ifndef WIFI_PASS
+#define WIFI_PASS           "Bholu@007"
+#endif
+
+#ifndef LOADCELL_CALIBRATION
+#define LOADCELL_CALIBRATION 442084.0f
+#endif
 
 #include <Arduino.h>
 #include <WiFi.h>
@@ -11,10 +32,7 @@
 #include <HX711.h>
 #include "model_code.h"
 
-// ─── TINYML MODEL PLACEHOLDER ──────────────────────────────────
-
-// ───────────────────────────────────────────────────────────────
-
+// ─── PIN DEFINITIONS & CONSTANTS ──────────────────────────────
 #define DOUT      4
 #define CLK       5
 #define BUZZER    15
@@ -27,16 +45,16 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 HX711 scale;
 
-char auth[] = "cEVTGSb_ZeujispK-KbPaxOykdJlFVmt";
-char ssid[] = "byebye";
-char pass[] = "Bholu@007";
+char auth[] = BLYNK_AUTH_TOKEN;
+char ssid[] = WIFI_SSID;
+char pass[] = WIFI_PASS;
 
 float weight         = 0;
 float startWeight    = 0;
 unsigned long startTime = 0;
 int   mlRemaining    = 0;
 int   percentLeft    = 0;
-float calibration = 442084;
+float calibration    = LOADCELL_CALIBRATION;
 
 volatile int dropCount              = 0;
 volatile unsigned long lastDropTime = 0;
